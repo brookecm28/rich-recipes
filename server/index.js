@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const userCtrl = require('./controllers/users')
 const recipeCtrl = require('./controllers/recipes')
 const massive = require('massive')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
@@ -19,8 +20,18 @@ app.use(session({
 }))
 
 //auth endpoints
+app.post('/api/auth/register', userCtrl.register)
+app.post('/api/auth/login', userCtrl.login)
+app.post('/api/auth/logout', userCtrl.logout)
+app.get('/api/auth/me', userCtrl.getUser)
 
-//recipe endpoints
+
+// //recipe endpoints
+// app.get('/api/recipes/:user_id', recipeCtrl.getAllRecipes) //list out all recipes for user account page
+// app.get('/api/recipes/:recipe_id', recipeCtrl.getOneRecipe) //display specific recipe
+// app.post('/api/recipes/new', recipeCtrl.newRecipe) //add new recipe
+// app.put('/api/recipes/update/:recipe_id', recipeCtrl.updateRecipe) //edit a user's recipe
+// app.delete('/api/recipes/delete/:recipe_id', recipeCtrl.deleteRecipe) //delete a user's recipe
 
 massive ({
     connectionString: CONNECTION_STRING,
