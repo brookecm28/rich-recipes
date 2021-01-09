@@ -17,7 +17,8 @@ CREATE TABLE rr_recipes (
 CREATE TABLE rr_ingredients (
     ingredients_id SERIAL PRIMARY KEY,
     rr_recipe_id int,
-    quanity varchar(150),
+    quantity varchar(150),
+    measurement varchar(200),
     ingredient varchar(250)
 );
 
@@ -27,3 +28,7 @@ CREATE TABLE rr_instructions (
     step_number int,
     instruction varchar
 );
+
+-- CREATE TABLE rr_stage (
+--     recipe_id serial primary key
+-- )

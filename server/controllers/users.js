@@ -39,7 +39,7 @@ module.exports = ({
             email: existingUser.email,
             password: existingUser.hash,
             id: existingUser.id
-        }
+        } 
         res.status(200).send(existingUser)
     },
     logout: (req, res) => {
