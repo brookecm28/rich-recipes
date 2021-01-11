@@ -41,5 +41,34 @@ module.exports = {
         } else {
             return res.status(403).send('User not logged in.')
         }
+    },
+    getMyRecipes: async (req, res) => {
+        const db = await req.app.get('db')
+        if (req.session.user) {
+            const {id} = req.session.user
+            db.recipes.get_all_recipes(id)
+            .then(recipes => res.status(200).send(recipes))
+            .catch(err => console.log(err))
+        } else {
+            res.status(403).send('User not logged in.')
+        }
+    },
+    getOneRecipe: async (req, res) => {
+        const db = await req.app.get('db')
+        const {recipe_id} = req.params
+        const {id} = req.session.user
+        let recipe
+        if (req.session.user) {
+            recipe = db.recipes.get_one_recipe(recipe_id)
+            .then(recipe => {
+                if (recipe[0].rr_user_id !== id) {
+                    res.status(401).send('You do not have access to this recipe.')
+                } else {
+                    res.status(200).send(recipe)
+                }
+            }).catch(err => console.log(err))
+        } else {
+            res.status(403).send('User not logged in.')
+        }
     }
 } 
