@@ -31,7 +31,7 @@ app.get('/api/recipes', recipeCtrl.getMyRecipes) //list out all recipes for user
 app.get('/api/recipes/:recipe_id', recipeCtrl.getOneRecipe) //display specific recipe
 app.post('/api/recipes/new', recipeCtrl.newRecipe) //add new recipe
 // app.put('/api/recipes/update/:recipe_id', recipeCtrl.updateRecipe) //edit a user's recipe
-// app.delete('/api/recipes/delete/:recipe_id', recipeCtrl.deleteRecipe) //delete a user's recipe
+app.delete('/api/recipes/delete/:recipe_id', recipeCtrl.deleteRecipe) //delete a user's recipe
 
 massive ({
     connectionString: CONNECTION_STRING,

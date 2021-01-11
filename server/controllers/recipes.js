@@ -70,5 +70,15 @@ module.exports = {
         } else {
             res.status(403).send('User not logged in.')
         }
+    },
+    deleteRecipe: async (req, res) => {
+        const db = await req.app.get('db')
+        const {recipe_id} = req.params
+        if (req.session.user) {
+            db.recipes.delete_recipe(recipe_id)
+            .then(_ => res.sendStatus(200)).catch(err => console.log(err))
+        } else {
+            res.status(403).send('User not logged in.')
+        }
     }
 } 
