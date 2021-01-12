@@ -1,12 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 import LandingHeader from './Components/Header/Landing-Header'
+import routes from './routes'
+import {HashRouter} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <LandingHeader />
-    </div>
+    <HashRouter>
+      <div className="App">
+        {routes}
+      </div>
+    </HashRouter>
   );
 }
 

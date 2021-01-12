@@ -17,7 +17,7 @@ class LandingHeader extends Component {
             <div className ='header'>
                 <div className="left-header">
                     <img src={lobsterLogo} alt='lobster logo' className='logo'/>
-                    <h1>Rich Recipes</h1>
+                    <h1 className='title'>Rich Recipes</h1>
                 </div>
                 <div className="right-header">
                     <nav>

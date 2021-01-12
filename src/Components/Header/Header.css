@@ -4,23 +4,38 @@
     justify-content: space-between;
     align-items: center;
     height: 110px;
-    background-color: antiquewhite;
+    background-color: #faf6f0;
 }
 
 .left-header {
-    display: flex
+    display: flex;
+    background-color: #faf6f0;
+}
+
+nav {
+    background-color: #faf6f0;
 }
 
 .logo {
     height: 100px;
     margin-left: 50px;
     margin-right: 20px;
+    background-color: #faf6f0;
+    
 }
 
+.title {
+    background-color: #faf6f0;
+    color: #1c7ad9;
+    font-family: 'Lora', serif;
+    font-weight: lighter;
+}
 .btn {
-    background-color: antiquewhite;
-    color: dodgerblue;
-    border: 2px solid dodgerblue;
+    background-color: #faf6f0;
+    color: #1c7ad9;
+    border: 2px solid #1c7ad9;
     font-size: 18pt;
     margin-right: 50px;
+    font-family: 'Lora', serif;
+    width: 115px;
 }
