@@ -71,6 +71,14 @@ module.exports = {
             res.status(403).send('User not logged in.')
         }
     },
+    updateRecipe: async (req, res) => {
+        const db = await req.app.get('db')
+        const {recipe_id} = req.params
+        const {title, photo} = req.body
+        db.recipes.edit_recipe([recipe_id, title, photo])
+        .then(recipe => res.status(200).send(recipe))
+        .catch(err => console.log(err))
+    },
     deleteRecipe: async (req, res) => {
         const db = await req.app.get('db')
         const {recipe_id} = req.params
