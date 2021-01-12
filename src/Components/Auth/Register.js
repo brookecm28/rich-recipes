@@ -3,15 +3,40 @@ import React, {Component} from 'react'
 // import {connect} from 'react-redux'
 import LandingHeader from '../Header/Landing-Header'
 import '../Auth/Register.css'
+import axios from 'axios'
 
 class Register extends Component {
     constructor() {
         super()
         this.state = {
+            first_name: '',
+            last_name: '',
             email: '',
-            password: '',
-            errorMsg: ''
+            password: ''
         }
+        this.register = this.register.bind(this)
+    }
+
+    handleChange(prop, val) {
+        this.setState({
+            [prop]: val
+        })
+        console.log(this.state)
+    }
+
+    register() {
+        axios.post('/api/auth/register', this.state)
+        .then(res => {
+            console.log('Registration successful.')
+        })
+        .catch(err => {
+            console.log(err)
+            alert('An account is already registered this that email.')
+            this.setState ({
+                email: '',
+                password: ''
+            })
+        })
     }
 
     render() {
@@ -19,11 +44,32 @@ class Register extends Component {
             <div className='register'>
                 <LandingHeader />
                 <div className='create-container'>
-                    <input className='inputs top' placeholder='First Name'></input>
-                    <input className='inputs' placeholder='Last Name'></input>
-                    <input className='inputs' placeholder='Email'></input>
-                    <input className='inputs' placeholder='Password'></input>
-                    <button className='btn create'>Create Account</button>
+                    <input 
+                      className='inputs top' 
+                      placeholder='First Name'
+                      value={this.state.first_name}
+                      onChange={e => this.handleChange('first_name', e.target.value)}>
+                    </input>
+                    <input 
+                      className='inputs' 
+                      placeholder='Last Name'
+                      value={this.state.last_name}
+                      onChange={e => this.handleChange('last_name', e.target.value)}>
+                    </input>
+                    <input 
+                      className='inputs' 
+                      placeholder='Email'
+                      value={this.state.email}
+                      onChange={e => this.handleChange('email', e.target.value)}>
+                    </input>
+                    <input 
+                      className='inputs' 
+                      placeholder='Password'
+                      type='password'
+                      value={this.state.password}
+                      onChange={e => this.handleChange('password', e.target.value)}>
+                    </input>
+                    <button className='btn create' onClick={this.register}>Create Account</button>
                 </div>
             </div>
         )

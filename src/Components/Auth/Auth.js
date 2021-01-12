@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 // import {connect} from 'react-redux'
 import LandingHeader from '../Header/Landing-Header'
 import '../Auth/Auth.css'
@@ -9,9 +9,34 @@ class Auth extends Component {
         super()
         this.state = {
             email: '',
-            password: '',
-            errorMsg: ''
+            password: ''
         }
+        this.login = this.login.bind(this)
+    }
+   
+
+    handleChange(prop, val) {
+        this.setState({
+            [prop]: val
+        })
+    }
+
+    login() {
+        axios.post('/api/auth/login', this.state)
+        .then(res => {
+            // this.props.updateUser({
+            //     email: res.data.email, //will potentially need to add other info here
+            // })
+            console.log('login successful')
+        
+        }).catch(err => {
+            console.log(err)
+            alert('Incorrect email or password.')
+            this.setState ({
+                email: '',
+                password: ''
+            })
+        })
     }
 
     render() {
@@ -19,9 +44,20 @@ class Auth extends Component {
             <div className='auth'>
                 <LandingHeader />
                 <div className='login-container'>
-                    <input className='inputs top' placeholder='Email'></input>
-                    <input className='inputs' placeholder='Password'></input>
-                    <button className='btn login'>Login</button>
+                    <input 
+                      className='inputs top' 
+                      placeholder='Email' 
+                      value={this.state.email}
+                      onChange={e => this.handleChange('email', e.target.value)}>
+                    </input>
+                    <input 
+                      className='inputs' 
+                      placeholder='Password' 
+                      value={this.state.password}
+                      type='password'
+                      onChange={e => this.handleChange('password', e.target.value)}>
+                    </input>
+                    <button className='btn login' onClick={this.login}>Login</button>
                 </div>
             </div>
         )
