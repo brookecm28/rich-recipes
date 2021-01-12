@@ -7,5 +7,7 @@ import Register from './Components/Auth/Register'
 export default (
     <Switch>
         <Route exact path='/' component={Landing} />
+        <Route exact path='/auth' component={Auth} />
+        <Route exact path='/register' component={Register} />
     </Switch>
 )

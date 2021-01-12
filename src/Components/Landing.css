@@ -1,9 +1,12 @@
 * {
-    background-color: #5C3955;
     color: #faf6f0;
     font-family: 'Lora', serif;
 }
 
+.page {
+    background-color: #5C3955;
+    height: 100vh;
+}
 .info {
     display: flex;
     justify-content: space-around;

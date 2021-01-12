@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import lobsterLogo from './../../assets/blue-lobster-logo.png'
 import './Header.css'
-// import {Link, withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 // import {connect} from 'react-redux'
 
 class LandingHeader extends Component {
@@ -16,13 +16,21 @@ class LandingHeader extends Component {
          return (
             <div className ='header'>
                 <div className="left-header">
-                    <img src={lobsterLogo} alt='lobster logo' className='logo'/>
-                    <h1 className='title'>Rich Recipes</h1>
+                    <Link to='/' className='lobster-link'>
+                        <img src={lobsterLogo} alt='lobster logo' className='logo'/>
+                    </Link>
+                    <Link to='/' className='lobster-link'>
+                        <h1 className='title'>Rich Recipes</h1>
+                    </Link>
                 </div>
                 <div className="right-header">
                     <nav>
-                        <button className='btn'>Join</button>
-                        <button className='btn'>Register</button>
+                        <Link to='/register' className='register-link'>
+                            <button className='btn'>Join</button>
+                        </Link>
+                        <Link to='/auth' className='login-link'>
+                            <button className='btn'>Login</button>
+                        </Link>
                     </nav>
                 </div>
             </div>
@@ -30,4 +38,4 @@ class LandingHeader extends Component {
     }
 }
 
-export default LandingHeader
+export default withRouter(LandingHeader)
