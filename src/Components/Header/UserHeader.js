@@ -27,7 +27,6 @@ class UserHeader extends Component {
             })
             this.props.history.push('/')
         })
-
     }
 
     render() {

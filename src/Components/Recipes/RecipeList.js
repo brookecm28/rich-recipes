@@ -7,16 +7,23 @@ import '../Recipes/RecipeList.css'
 class RecipeList extends Component {
     constructor() {
         super() 
-        this.state = {}
+        this.state = {
+            id: 0,
+            
+        }
         
     }
 
+    componentDidMount() {
+        console.log(this.props.location.pathname)
+        axios.get('')
+    }
 
     render () {
         return (
             <div className="r-list">
                 <UserHeader />
-               <div>heyyo</div> 
+                <div>heyyo</div> 
             </div>
             
         )
