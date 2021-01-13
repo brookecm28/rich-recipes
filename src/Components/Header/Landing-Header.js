@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import lobsterLogo from './../../assets/blue-lobster-logo.png'
-import './Header.css'
+import './LandingHeader.css'
 import {Link, withRouter} from 'react-router-dom'
 // import {connect} from 'react-redux'
 

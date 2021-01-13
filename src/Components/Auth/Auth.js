@@ -28,7 +28,7 @@ class Auth extends Component {
             //     email: res.data.email, //will potentially need to add other info here
             // })
             console.log('login successful')
-        
+        this.props.history.push('/me')
         }).catch(err => {
             console.log(err)
             alert('Incorrect email or password.')
