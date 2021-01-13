@@ -44,16 +44,16 @@ class UserHeader extends Component {
                 <div className="right-header">
                     <nav>
                         <Link className='new-link'>
-                            <button className='btn'>New Recipe</button>
+                            <button className='btn header-btn'>New Recipe</button>
                         </Link>
                         <Link className='list-link'>
-                            <button className='btn'>Recipes</button>
+                            <button className='btn header-btn'>Recipes</button>
                         </Link>
                         {/* <Link className='grocery-link'>
-                            <button className='btn'>Grocery List</button>
+                            <button className='btn header-btn'>Grocery List</button>
                         </Link> */}
                         <Link className='logout-link'>
-                            <button className='btn' onClick={this.logout}>Logout</button>
+                            <button className='btn header-btn' onClick={this.logout}>Logout</button>
                         </Link>
                     </nav>
                 </div>

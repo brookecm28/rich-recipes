@@ -52,8 +52,13 @@ nav {
 .btn {
     background-color: #faf6f0;
     color: #1c7ad9;
-    border: 2px solid #faf6f0;
+    border: 2px solid #1c7ad9;
     font-size: 18pt;
     font-family: 'Lora', serif;
-    width: 100px;
+    /* width: 100px; */
+    padding-bottom: 10px;
+}
+
+.header-btn {
+    border: 2px solid #faf6f0;
 }

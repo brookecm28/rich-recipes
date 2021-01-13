@@ -26,10 +26,10 @@ class LandingHeader extends Component {
                 <div className="right-header">
                     <nav>
                         <Link to='/register' className='register-link'>
-                            <button className='btn'>Join</button>
+                            <button className='btn header-btn'>Join</button>
                         </Link>
                         <Link to='/auth' className='login-link'>
-                            <button className='btn'>Login</button>
+                            <button className='btn header-btn'>Login</button>
                         </Link>
                     </nav>
                 </div>
