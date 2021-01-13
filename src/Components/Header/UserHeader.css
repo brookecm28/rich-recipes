@@ -2,16 +2,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 110px;
+    height: 100px;
     width: 100vw;
     background-color: #faf6f0;
-    
+    position: fixed;
+    top: 0;
 }
 
 .left-header {
     display: flex;
     background-color: #faf6f0;
     align-items: center;
+    height: 100px;
 }
 
 nav {
@@ -27,8 +29,12 @@ nav {
     height: 100px;
     margin-left: 50px;
     margin-right: 20px;
+    margin-bottom: 0px;
     background-color: #faf6f0;
-    
+}
+
+.lobster-link {
+    height: 100px;
 }
 
 .title {

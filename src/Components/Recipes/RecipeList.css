@@ -1,4 +1,37 @@
 .r-list {
     background-color: #5C3955;
-    height: 100vh;
+    height: 100%;
+    margin-top: 100px;
+    margin-bottom: 0;
+
+}
+
+.my-recipes-title {
+    font-weight: lighter;
+    font-size: 44pt;
+    padding-top: 25px;
+    text-align: left;
+    margin-left: 145px;
+}
+
+.single-recipe-container{
+    background-color: #8BC5F9;
+    margin-bottom: 0;
+    margin-left: 145px;
+    margin-right: 145px;
+    display: flex;
+    justify-content: space-around;
+    align-items: space-between;
+    
+    border-bottom: 2pt solid #1C7ad9;
+}
+
+.recipe-link {
+    width: auto;
+}
+
+.recipe-title {
+    font-weight: lighter;
+    font-size: 20pt;
+    width: auto;
 }
