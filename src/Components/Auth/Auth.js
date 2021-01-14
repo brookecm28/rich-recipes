@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 import LandingHeader from '../Header/Landing-Header'
 import '../Auth/Auth.css'
+import {updateUser} from '../../Redux/Reducer'
 
 class Auth extends Component {
     constructor() {
@@ -14,7 +15,6 @@ class Auth extends Component {
         this.login = this.login.bind(this)
     }
    
-
     handleChange(prop, val) {
         this.setState({
             [prop]: val
@@ -29,6 +29,11 @@ class Auth extends Component {
             // })
             console.log('login successful')
         this.props.history.push('/me')
+        this.props.updateUser({
+            id: res.data.id,
+            first_name: res.data.first_name,
+            email: res.data.email
+        })
         }).catch(err => {
             console.log(err)
             alert('Incorrect email or password.')
@@ -64,4 +69,4 @@ class Auth extends Component {
     }
 }
 
-export default Auth
+export default connect(null, {updateUser}) (Auth)

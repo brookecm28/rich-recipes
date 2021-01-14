@@ -22,16 +22,26 @@
     display: flex;
     justify-content: space-around;
     align-items: space-between;
-    
     border-bottom: 2pt solid #1C7ad9;
 }
 
 .recipe-link {
     width: auto;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .recipe-title {
     font-weight: lighter;
     font-size: 20pt;
     width: auto;
+    
+}
+
+.icon {
+    margin-top: 32px;
+    height: 17px;
 }

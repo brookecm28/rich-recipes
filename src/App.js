@@ -1,5 +1,4 @@
 import './App.css';
-import LandingHeader from './Components/Header/Landing-Header'
 import routes from './routes'
 import {HashRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'

@@ -34,27 +34,27 @@ class UserHeader extends Component {
          return (
             <div className ='header'>
                 <div className="left-header">
-                    <Link className='lobster-link'>
+                    <Link to='/me' className='lobster-link'>
                         <img src={lobsterLogo} alt='lobster logo' className='logo'/>
                     </Link>
-                    <Link className='lobster-link'>
+                    <Link to='/me' className='lobster-link'>
                         <h1 className='title'>Rich Recipes</h1>
                     </Link>
                 </div>
                 <div className="right-header">
                     <nav>
-                        <Link className='new-link'>
+                        <Link to='/new' className='new-link'>
                             <button className='btn header-btn'>New Recipe</button>
                         </Link>
-                        <Link className='list-link'>
+                        <Link to='/me' className='list-link'>
                             <button className='btn header-btn'>Recipes</button>
                         </Link>
                         {/* <Link className='grocery-link'>
                             <button className='btn header-btn'>Grocery List</button>
                         </Link> */}
-                        <Link className='logout-link'>
+                        {/* <Link className='logout-link'> */}
                             <button className='btn header-btn' onClick={this.logout}>Logout</button>
-                        </Link>
+                        {/* </Link> */}
                     </nav>
                 </div>
             </div>

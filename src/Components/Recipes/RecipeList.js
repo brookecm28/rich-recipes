@@ -4,6 +4,8 @@ import UserHeader from '../Header/UserHeader'
 import {Link, withRouter} from 'react-router-dom'
 import '../Recipes/RecipeList.css'
 import {connect} from 'react-redux'
+import {HiX, HiPencil} from 'react-icons/hi'
+import {updateUser, logout} from '../../Redux/Reducer'
 
 class RecipeList extends Component {
     constructor() {
@@ -12,20 +14,26 @@ class RecipeList extends Component {
             recipes: [],
             // loading: true
         }
-        
     }
 
     componentDidMount() {
-        console.log(this.props.location.pathname)
-        console.log(this.props.id)
-        axios.get('/api/recipes')
-        .then(res => {
-            this.setState ({
-                recipes: res.data,
-                // loading: false
-            })
-            console.log(this.state.recipes)
-        })
+    //    this.listRecipes() 
+       console.log(this.props.location.pathname)
+       console.log(this.props.id)
+       axios.get('/api/recipes')
+       .then(res => {
+           console.log(res.data)
+           this.setState ({
+               recipes: res.data,
+               // loading: false
+           })
+           console.log(this.state.recipes)
+       })
+    }
+
+    deleteRecipe(id) {
+        axios.delete(`/api/recipes/delete/${id}`)
+        .then(_ => this.componentDidMount())
     }
 
     render () {
@@ -38,12 +46,14 @@ class RecipeList extends Component {
                     <Link recipe_id={recipe.recipe_id} className='recipe-link'>
                         <h3 className='recipe-title'>{recipe.title}</h3>
                     </Link>
-                    <p>edit</p>
-                    <p>delete</p>
-                    
+                    <HiPencil className='icon' />
+                    <HiX className='icon' 
+                    onClick={_ => this.deleteRecipe(recipe.recipe_id)}
+                     />
                 </div>
             )
         })
+
         return (
             <div className="r-list">
                 <UserHeader />
@@ -53,14 +63,16 @@ class RecipeList extends Component {
                 </div>
                 
             </div>
-            
         )
     }
 }
 
 function mapStateToProps(state) {
     console.log(state)
-    return state;
+    return {
+        updateUser: state.updateUser,
+        logout: state.logout
+    }
 }
 
-export default withRouter((connect(mapStateToProps)(RecipeList)))
+export default withRouter((connect(mapStateToProps, {updateUser, logout})(RecipeList)))
