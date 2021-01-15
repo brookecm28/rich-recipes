@@ -1,6 +1,7 @@
 import UserHeader from '../Header/UserHeader'
 import '../Recipes/NewRecipe.css'
 import React, {Component} from 'react'
+import axios from 'axios'
 
 class NewRecipe extends Component {
     constructor () {
@@ -13,9 +14,11 @@ class NewRecipe extends Component {
             quantity: '',
             measurement: '',
             ingredient: '',
-            tempInstructions: ''
+            tempInstructions: '',
+            completeRecipe: {}
         }
         this.addIngredient = this.addIngredient.bind(this)
+        this.addRecipe = this.addRecipe.bind(this)
     }
 
     handleTitleChange(e) {
@@ -27,8 +30,9 @@ class NewRecipe extends Component {
 
     handleImageChange(e) {
         this.setState ({
-            image: e
+            img: e
         })
+        console.log(this.state.img)
     }
     
     handleQuantityChange(e) {
@@ -76,7 +80,32 @@ class NewRecipe extends Component {
     }
 
     addRecipe() {
-
+        let stringInstructions = this.state.tempInstructions.split('\n')
+        console.log(stringInstructions)
+        let formattedInstructions = []
+        for (let i = 0; i < stringInstructions.length; i++) {
+            formattedInstructions.push({
+                step: i + 1,
+                instruction: stringInstructions[i]
+            })
+            console.log(formattedInstructions)
+        }
+        this.setState({
+            instructions: [formattedInstructions]
+        })
+        console.log(this.state.instructions)
+        console.log(this.state.completeRecipe)
+        axios.post('/api/recipes/new', {
+            title: this.state.title,
+            ingredients: this.state.ingredients,
+            instructions: formattedInstructions,
+            photo: this.state.img
+        })
+        .then(() => {
+            console.log('Recipe added successfully.')
+            this.props.history.push('/me')
+        })
+        .catch(err => console.log(err))
     }
     
     render () {
@@ -99,7 +128,7 @@ class NewRecipe extends Component {
                         <input //this will be amazon s3
                             className='inputs'
                             placeholder='Image'
-                            value={this.state.image}
+                            value={this.state.img}
                             onChange={e => this.handleImageChange(e.target.value)}>
                         </input>
                     </div>
@@ -136,7 +165,8 @@ class NewRecipe extends Component {
                             onChange={e => this.handleInstructionChange(e.target.value)}
                             ></textarea>
                     </div>
-                    <button className='btn add-recipe'>Add Recipe</button>
+                    <button className='btn add-recipe'
+                        onClick={ this.addRecipe}>Add Recipe</button>
                 </div>
             </div>
         </div>
