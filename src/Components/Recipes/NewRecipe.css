@@ -10,13 +10,23 @@
 
 .content-container {
     background-color: #faf6f0;
-    height: 600px;
+    height: 90%;
     width: 800px;
 }
 
 .group-title {
     color: #002626;
     font-size: 18pt;
+}
+
+.top-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.ing-input {
+    margin-right: 20px;
 }
 
 .text-instr {
@@ -28,8 +38,35 @@
     background-color: white;
     border: 1.5pt solid #002626;
     color: #002626;
+    margin-top: 6px;
 }
 
 .add-ingredient {
     font-size: 12pt;
+    height: 25px;
+    width: 125px;
+}
+
+.single-ingredient-container {
+    display: flex;
+    height: 25px;
+    align-items: center;
+}
+.ing-list-container-container {
+    display: flex;
+    justify-content: center;
+}
+
+.ing-list-container {
+    height: 150px;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.ing-list {
+    color: #002626;
+    font-size: 10pt;
+    margin-right: 6px;
 }
