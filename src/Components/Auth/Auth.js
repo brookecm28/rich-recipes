@@ -3,7 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import LandingHeader from '../Header/Landing-Header'
 import '../Auth/Auth.css'
-import {updateUser} from '../../Redux/Reducer'
+import {updateUser} from '../../Redux/AuthReducer'
 
 class Auth extends Component {
     constructor() {

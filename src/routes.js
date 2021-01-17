@@ -5,6 +5,7 @@ import Auth from './Components/Auth/Auth'
 import Register from './Components/Auth/Register'
 import RecipeList from './Components/Recipes/RecipeList'
 import NewRecipe from './Components/Recipes/NewRecipe'
+import SingleRecipe from './Components/Recipes/SingleRecipe'
 
 export default (
     <Switch>
@@ -13,5 +14,6 @@ export default (
         <Route exact path='/register' component={Register} />
         <Route exact path='/me' component={RecipeList} />
         <Route exact path='/new' component={NewRecipe} />
+        <Route exact path='/my-recipe' component={SingleRecipe} ></Route>
     </Switch>
 )

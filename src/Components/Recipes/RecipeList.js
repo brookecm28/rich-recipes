@@ -5,13 +5,14 @@ import {Link, withRouter} from 'react-router-dom'
 import '../Recipes/RecipeList.css'
 import {connect} from 'react-redux'
 import {HiX, HiPencil} from 'react-icons/hi'
-import {updateUser, logout} from '../../Redux/Reducer'
+import {updateUser, logout} from '../../Redux/AuthReducer'
 
 class RecipeList extends Component {
     constructor() {
         super() 
         this.state = {
             recipes: [],
+            recipeId: 0,
             // loading: true
         }
     }
@@ -36,6 +37,10 @@ class RecipeList extends Component {
         .then(_ => this.componentDidMount())
     }
 
+    sendToState(recipe_id) {
+        this.setState({recipeId: recipe_id})
+    }
+
     render () {
         let {recipes} = this.state
         let mappedRecipes = recipes.map(recipe => {
@@ -43,12 +48,16 @@ class RecipeList extends Component {
             return (
                 <div className='single-recipe-container' key={recipe.recipe_id}>
                     <p>pic</p>
-                    <Link recipe_id={recipe.recipe_id} className='recipe-link'>
-                        <h3 className='recipe-title'>{recipe.title}</h3>
+                    <Link to={`/my-recipe`} recipe_id={recipe.recipe_id} className='recipe-link'>
+                        <h3 
+                            className='recipe-title'
+                            onClick={_ => this.sendToState(recipe.recipe_id)}
+                            >{recipe.title}</h3>
                     </Link>
                     <HiPencil className='icon' />
-                    <HiX className='icon' 
-                    onClick={_ => this.deleteRecipe(recipe.recipe_id)}
+                    <HiX 
+                        className='icon' 
+                        onClick={_ => this.deleteRecipe(recipe.recipe_id)}
                      />
                 </div>
             )
@@ -71,7 +80,8 @@ function mapStateToProps(state) {
     console.log(state)
     return {
         updateUser: state.updateUser,
-        logout: state.logout
+        logout: state.logout,
+        recipeId: this.state.recipe_id
     }
 }
 
