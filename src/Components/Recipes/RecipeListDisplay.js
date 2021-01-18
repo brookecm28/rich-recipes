@@ -6,17 +6,17 @@ import {getAllRecipes} from '../../Redux/RecipeReducer'
 
 class RecipeListDisplay extends Component {
 
-    componentDidMount() {
-        this.props.getAllRecipes()
-    }
+    // componentDidMount() {
+    //     this.props.getAllRecipes()
+    // }
     
     render() {
-        let {recipes} = this.props
-        console.log(recipes)
-        if (!recipes) {
+        let {myList} = this.props
+        console.log(myList)
+        if (!myList) {
             return <div className='no-recipes'>Your list is empty. Click 'New Recipe' above to get started!</div>
         } 
-        let mappedRecipes = this.props.recipes.map((recipe) => (
+        let mappedRecipes = this.props.myList.map((recipe) => (
             <div>
                 <p>pic</p>
                 <Link
