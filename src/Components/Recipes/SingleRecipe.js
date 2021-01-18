@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import UserHeader from '../Header/UserHeader'
-import {Link, withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {HiPencil} from 'react-icons/hi'
-import {getSingleRecipe} from '../../Redux/RecipeReducer'
+// import {connect} from 'react-redux'
+// import {getAllRecipes} from '../../Redux/RecipeReducer'
 
 class SingleRecipe extends Component {
     constructor () {
@@ -13,8 +11,7 @@ class SingleRecipe extends Component {
     }
 
     componentDidMount(){
-        this.props.getSingleRecipe()
-        console.log(this.props.recipeId)
+        console.log(this.props.location.aboutProps.recipe_id)
     }
 
     render () {
@@ -22,14 +19,17 @@ class SingleRecipe extends Component {
             <div>
                 <UserHeader />
                 <div>{this.props.recipe}</div>
+                <div>HELLO</div>
             </div>
         )
     }
 }
 
-function mapStateToProps(state) {
-    console.log(state)
-    return {getSingleRecipe: state.getSingleRecipe}
-}
+// function mapStateToProps(state) {
+//     console.log(state)
+//     return {getSingleRecipe: state.getSingleRecipe}
+// }
 
-export default connect(mapStateToProps, {getSingleRecipe})(SingleRecipe)
+// export default connect(mapStateToProps, {getSingleRecipe})(SingleRecipe)
+
+export default SingleRecipe

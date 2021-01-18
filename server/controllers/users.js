@@ -1,4 +1,8 @@
 const bcrypt = require('bcryptjs')
+require('dotenv').config()
+const {PASSWORD} = process.env
+
+const nodemailer = require('nodemailer')
 
 module.exports = ({
     register: async (req, res) => {
@@ -15,7 +19,33 @@ module.exports = ({
         const newUser = await db.users.register_user([first_name, last_name, email, hash])
 
         req.session.user = newUser
+                //step 1
+               
+                let transporter = await nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'rich.recipes.lobster@gmail.com',
+                        pass: PASSWORD
+                    }
+                })
         
+                //step 2
+                let mailOPtions = {
+                    from: 'rich.recipes.lobster@gmail.com',
+                    to: `${email}`,
+                    subject: 'Testing on Register Fn',
+                    text: `Welcome to Rich Recipes, ${first_name}.\n\nThank you for your support. If you have any suggestions for improvements, please email rich.recipes.lobster@gmail.com.\n\nBest,\nRichie the Lobster`
+                }
+        
+                //step 3
+                await transporter.sendMail(mailOPtions, function(err, data) {
+                    if (err) {
+                        console.log('Error occurred', err)
+                    } else {
+                        console.log('sent successfully')
+                    }
+                })
+
         res.status(200).send(newUser)
     },
     login: async (req, res) => {

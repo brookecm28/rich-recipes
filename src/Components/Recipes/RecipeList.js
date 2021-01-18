@@ -4,8 +4,8 @@ import UserHeader from '../Header/UserHeader'
 import {Link, withRouter} from 'react-router-dom'
 import '../Recipes/RecipeList.css'
 import {connect} from 'react-redux'
-import {HiX, HiPencil} from 'react-icons/hi'
 import {updateUser, logout} from '../../Redux/AuthReducer'
+import RecipeListDisplay from './RecipeListDisplay'
 
 class RecipeList extends Component {
     constructor() {
@@ -43,32 +43,19 @@ class RecipeList extends Component {
 
     render () {
         let {recipes} = this.state
-        let mappedRecipes = recipes.map(recipe => {
-            console.log(recipe.recipe_id, recipe.rr_user_id)
-            return (
-                <div className='single-recipe-container' key={recipe.recipe_id}>
-                    <p>pic</p>
-                    <Link to={`/my-recipe`} recipe_id={recipe.recipe_id} className='recipe-link'>
-                        <h3 
-                            className='recipe-title'
-                            onClick={_ => this.sendToState(recipe.recipe_id)}
-                            >{recipe.title}</h3>
-                    </Link>
-                    <HiPencil className='icon' />
-                    <HiX 
-                        className='icon' 
-                        onClick={_ => this.deleteRecipe(recipe.recipe_id)}
-                     />
-                </div>
-            )
-        })
+        // let mappedRecipes = recipes.map(recipe => {
+        //     console.log(recipe.recipe_id, recipe.rr_user_id)
+        //     return (
+                
+        //     )
+        // })
 
         return (
             <div className="r-list">
                 <UserHeader />
                 <h1 className='my-recipes-title'>My Recipes</h1>
                 <div className='singles-container'>
-                   {mappedRecipes} 
+                   <RecipeListDisplay /> 
                 </div>
                 
             </div>
@@ -80,8 +67,7 @@ function mapStateToProps(state) {
     console.log(state)
     return {
         updateUser: state.updateUser,
-        logout: state.logout,
-        recipeId: this.state.recipe_id
+        logout: state.logout
     }
 }
 
