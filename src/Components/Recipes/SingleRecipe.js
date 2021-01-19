@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, {Component} from 'react'
 import UserHeader from '../Header/UserHeader'
-// import {connect} from 'react-redux'
-// import {getAllRecipes} from '../../Redux/RecipeReducer'
+import {connect} from 'react-redux'
+import {getOneRecipe} from '../../Redux/RecipeReducer'
 import './SingleRecipe.css'
 
 class SingleRecipe extends Component {
@@ -11,46 +11,47 @@ class SingleRecipe extends Component {
         this.state = {
             recipe: []
         }
-        this.getRecipe = this.getRecipe.bind(this)
     }
 
     componentDidMount () {
-        this.getRecipe()
-    }
-
-    getRecipe () {
         let id = this.props.match.params.recipe_id
-        axios.get(`/api/recipes/${id}`)
-        .then(res => {
-            console.log(res.data)
-            console.log('mounted')
-            this.setState({
-                recipe: [...res.data]
-            })
-        })
-        .catch(err => console.log(err))
+        this.props.getOneRecipe(id)
     }
 
     render () {
-        // const recipe = this.state
-        console.log(this.state.recipe[0])
-        return (
-            <div>
-                <UserHeader />
-                <div className='single-page'>
-                    <h1>{this.state.recipe[0]}</h1>
-                    <div>HELLO</div>
+        let mappedInstructions = this.props.recipes[0].map(el => {
+            return (
+                <div>
+                    <a>{el.step_number}</a>
+                    <div>{el.instruction}</div>
                 </div>
+            )
+        })
+        let mappedIngredients = this.props.recipes[1].map(el => {
+            return (
+                <div key={el.instructions_id}>
+                    <a>{el.quantity} {el.measurement} {el.ingredient}</a>
+                </div>
+            )
+        })
+        console.log(this.props.recipes)
+        console.log(this.props.recipes[0][0].title)
+        return (
+            <div className='edit-page'>
+                <UserHeader />
+                <div>{this.props.recipes[0][0].title}</div>
+                {mappedIngredients}
+                {mappedInstructions}
             </div>
         )
     }
 }
 
-// function mapStateToProps(state) {
-//     console.log(state)
-//     return {getSingleRecipe: state.getSingleRecipe}
-// }
+function mapStateToProps(state) {
+    console.log(state)
+    return {
+        recipes: state.recipe.singleRecipe
+    }
+}
 
-// export default connect(mapStateToProps, {getSingleRecipe})(SingleRecipe)
-
-export default SingleRecipe
+export default connect(mapStateToProps, {getOneRecipe})(SingleRecipe)

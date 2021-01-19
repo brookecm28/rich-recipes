@@ -32,16 +32,7 @@ class EditRecipe extends Component {
     }
 
     updateInfo() {
-        let instrArr = []
-        let ingArr = []
-        let ingMin = 0
-        let instrMinArr = []
-        let ingMinArr = []
-        for(let i = 0; i < this.props.recipes[0].length; i++) {
-            instrMinArr.push(this.props.recipes[0].instructions_id)
-        }
-        let instrMin = instrMinArr.min()
-        console.log(instrMin)
+        
         
        }
 
