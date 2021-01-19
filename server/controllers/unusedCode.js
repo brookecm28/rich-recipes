@@ -52,3 +52,30 @@
                         <a>tube(s)</a>
                     </div>
                 </div> */
+
+// ------------------------------BEFORE ADDED ASC ORDER TO SQL     
+
+            // let instrMinArr = []
+// let instrArr = []
+// for(let i = 0; i < this.props.recipes[0].length; i++) {
+//     instrMinArr.push(this.props.recipes[0][i].instructions_id)
+// }
+// let instrMin = Math.min(...instrMinArr)
+// console.log(instrMin)
+// console.log(this.props.recipes[0])
+// for (let i = 0; i < this.props.recipes[0].length; i++) {
+//     console.log(this.props.recipes[0][i])
+//     console.log(instrMin)
+//     for (let j = 0; j < this.props.recipes[0].length; j++) {
+//         console.log(this.props.recipes[0][j].instructions_id)
+//         if (this.props.recipes[0][j].instructions_id === instrMin) {
+//             instrArr.push({
+//                 step_number: this.props.recipes[0][j].step_number,
+//                 instruction: this.props.recipes[0][j].instruction 
+//             })
+//             console.log(instrArr)
+//         }
+//     }
+    
+//     instrMin++    
+// } 

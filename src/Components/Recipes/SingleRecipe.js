@@ -1,25 +1,46 @@
+import axios from 'axios'
 import React, {Component} from 'react'
-// import axios from 'axios'
 import UserHeader from '../Header/UserHeader'
 // import {connect} from 'react-redux'
 // import {getAllRecipes} from '../../Redux/RecipeReducer'
+import './SingleRecipe.css'
 
 class SingleRecipe extends Component {
     constructor () {
         super()
-        this.state = { }
+        this.state = {
+            recipe: []
+        }
+        this.getRecipe = this.getRecipe.bind(this)
     }
 
-    componentDidMount(){
-        console.log(this.props.location.aboutProps.recipe_id)
+    componentDidMount () {
+        this.getRecipe()
+    }
+
+    getRecipe () {
+        let id = this.props.match.params.recipe_id
+        axios.get(`/api/recipes/${id}`)
+        .then(res => {
+            console.log(res.data)
+            console.log('mounted')
+            this.setState({
+                recipe: [...res.data]
+            })
+        })
+        .catch(err => console.log(err))
     }
 
     render () {
+        // const recipe = this.state
+        console.log(this.state.recipe[0])
         return (
             <div>
                 <UserHeader />
-                <div>{this.props.recipe}</div>
-                <div>HELLO</div>
+                <div className='single-page'>
+                    <h1>{this.state.recipe[0]}</h1>
+                    <div>HELLO</div>
+                </div>
             </div>
         )
     }

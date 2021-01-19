@@ -5,10 +5,6 @@ import {connect} from 'react-redux'
 import {getAllRecipes} from '../../Redux/RecipeReducer'
 
 class RecipeListDisplay extends Component {
-
-    // componentDidMount() {
-    //     this.props.getAllRecipes()
-    // }
     
     render() {
         let {myList} = this.props
@@ -17,20 +13,17 @@ class RecipeListDisplay extends Component {
             return <div className='no-recipes'>Your list is empty. Click 'New Recipe' above to get started!</div>
         } 
         let mappedRecipes = this.props.myList.map((recipe) => (
-            <div>
+            <div key={recipe.recipe_id} className='indiv-recipe'>
                 <p>pic</p>
                 <Link
-                    to={{
-                    pathname: '/my-recipe',
-                    aboutProps: {
-                        recipe_id: recipe.recipe_id
-                    }
-                }}
+                    to={`/my-recipe/${recipe.recipe_id}`}
                     recipe_id={recipe.recipe_id}
                     className='recipe-link'>
                 <h3 className='recipe-title'>{recipe.title}</h3>
                 </Link>
-                <HiPencil className='icon' />
+                <Link to={`/edit-recipe/${recipe.recipe_id}`} recipe_id={recipe.recipe_id}>
+                    <HiPencil className='icon' />
+                </Link>
                 <HiX
                     className='icon'
                     onClick={_ => this.deleteRecipe(recipe.recipe_id)}

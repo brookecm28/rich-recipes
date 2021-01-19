@@ -5,7 +5,6 @@ const recipeCtrl = require('./controllers/recipes')
 const massive = require('massive')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 const session = require('express-session')
-const mailer = require('./mailer')
 
 const app = express()
 
@@ -21,7 +20,7 @@ app.use(session({
 }))
 
 //auth endpoints
-app.post('/api/auth/register', userCtrl.register, mailer.send)
+app.post('/api/auth/register', userCtrl.register)
 app.post('/api/auth/login', userCtrl.login)
 app.post('/api/auth/logout', userCtrl.logout)
 app.get('/api/auth/me', userCtrl.getUser)
