@@ -28,9 +28,9 @@
 
 nav {
     background-color: #faf6f0;
-    width: 250px;
+    /* width: 150px; */
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-right: 10px;
 }
 
@@ -47,6 +47,7 @@ nav {
     color: #1c7ad9;
     font-family: 'Lora', serif;
     font-weight: lighter;
+    margin-top: 29px;
 }
 
 .btn {
@@ -61,4 +62,5 @@ nav {
 
 .header-btn {
     border: 2px solid #faf6f0;
+    
 }

@@ -1,6 +1,6 @@
 .r-list {
     background-color: #5C3955;
-    height: 100%;
+    height: 88.2vh;
     margin-top: 100px;
     margin-bottom: 0;
 
@@ -35,8 +35,9 @@
 
 .indiv-recipe {
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     border-bottom: 2pt solid #1C7ad9;
+    width: 1225px;
 }
 
 .recipe-link {
@@ -52,10 +53,29 @@
     font-weight: lighter;
     font-size: 20pt;
     width: auto;
-    
+    position: absolute;
+    left: 500px;
 }
 
 .icon {
     margin-top: 32px;
     height: 17px;
+}
+
+.pencil {
+    position: absolute;
+    right: 550px;
+}
+
+.delete {
+    position: absolute;
+    right: 400px;
+}
+
+.list-pic {
+    height: 75px;
+    display: flex;
+    align-content: center;
+    position: relative;
+    margin-left: 100px;
 }

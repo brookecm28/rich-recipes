@@ -14,7 +14,11 @@ class RecipeListDisplay extends Component {
         } 
         let mappedRecipes = this.props.myList.map((recipe) => (
             <div key={recipe.recipe_id} className='indiv-recipe'>
-                <p>pic</p>
+                <img 
+                    className='list-pic' 
+                    src={recipe.photo} 
+                    alt='Not Available'
+                />
                 <Link
                     to={`/my-recipe/${recipe.recipe_id}`}
                     recipe_id={recipe.recipe_id}
@@ -22,10 +26,10 @@ class RecipeListDisplay extends Component {
                 <h3 className='recipe-title'>{recipe.title}</h3>
                 </Link>
                 <Link to={`/edit-recipe/${recipe.recipe_id}`} recipe_id={recipe.recipe_id}>
-                    <HiPencil className='icon' />
+                    <HiPencil className='icon pencil' />
                 </Link>
                 <HiX
-                    className='icon'
+                    className='icon delete'
                     onClick={_ => this.deleteRecipe(recipe.recipe_id)}
                 />
                 </div>

@@ -5,14 +5,43 @@
 
 .page {
     background-color: #5C3955;
-    height: 100vh;
+    height: 88.2vh;
     margin-top: 100px;
 }
 .info {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+.landing-body {
+    margin-top: 100px;
+}
+
+.para-left {
+    margin-left: 50px;
+}
+.para-right {
+    margin-right: 50px;
 }
 
 .slogan {
     font-weight: lighter;
+    font-size: 26pt;
+    padding-top: 75px;
+    padding-bottom: 50px;
+}
+
+.lobster {
+    height: 450px;
+}
+
+.landing-para {
+    width: 250px;
+    height: 250px;
+    border: 1pt solid #faf6f0;
+    font-size: 16pt;
+    display: flex;
+    align-items: center;
+    padding: 5px;
 }
