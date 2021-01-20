@@ -1,6 +1,45 @@
+.instr-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #faf6f0;
+    color: #002626;
+}
+
+.ing-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #faf6f0;
+    color: #002626;
+}
+
 .single-page {
     background-color: #8BC5F9;
     margin-top: 100px; 
     color: #002626;
-    height: 100vh;
+    height: 88.2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-disp-body {
+    background-color: #faf6f0;
+    width: 80%;
+    height: 90%;
+    color: #002626;
+}
+
+.sxn-title {
+    color: #002626;
+    font-weight: lighter;
+}
+
+#instr-words {
+    color: #002626;
+}
+
+#ing-words {
+    color: #002626;
 }
