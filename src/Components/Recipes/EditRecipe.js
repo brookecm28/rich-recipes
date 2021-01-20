@@ -10,11 +10,9 @@ class EditRecipe extends Component {
         super()
         this.state = {
             title: '',
-            ingredients: [],
-            instructions: [],
-            photo: ''
+            tempInstructions: ''
         }
-        this.updateInfo = this.updateInfo.bind(this)
+        this.clickSave = this.clickSave.bind(this)
     }
 
     componentDidMount() {
@@ -22,28 +20,65 @@ class EditRecipe extends Component {
         this.props.getOneRecipe(id)
     }
 
-    componentWillUnmount() {
+    handleInputChange (e) {
         this.setState ({
-            title: '',
-            ingredients: [],
-            instructions: [],
-            photo: ''
+            title: e
         })
     }
 
-    updateInfo() {
-        
-        
-       }
+    handleInstrChange(e) {
+        this.setState ({
+            tempInstructions: e
+        })
+    }
+
+    clickSave() {
+        let id = this.props.match.params.recipe_id
+        if (this.state.title === '') {
+           this.setState ({
+               title: this.props.recipes[0][0].title
+           })
+        }
+        let stringInstructions = this.state.tempInstructions.split('\n')
+        console.log(stringInstructions)
+        let formattedInstructions = []
+        for (let i = 0; i < stringInstructions.length; i++) {
+            formattedInstructions.push({
+                step: i + 1,
+                instruction: stringInstructions[i]
+            })
+        }
+        let formattedIngredients = this.props.recipes[1].map(el => {
+            return ({
+                quantity: el.quantity,
+                measurement: el.measurement,
+                ingredient: el.ingredient
+            })
+        })
+        console.log(formattedIngredients)
+        console.log(this.state.title)
+        axios.put(`/api/recipes/update/${id}`, {
+            title: (this.state.title === '' ? this.props.recipes[0][0].title : this.state.title),
+            // ingredients: formattedIngredients,
+            instructions: formattedInstructions,
+            photo: this.props.recipes[0][0].photo
+        })
+        .then(() => {
+            this.setState ({
+                title: '',
+                tempInstructions: []
+            }) 
+            console.log('Recipe updated successfully.')
+            this.props.history.push('/me')
+        })
+        .catch(err => console.log(err))
+        }
 
     render () {
+        let tempArr = []
         let mappedInstructions = this.props.recipes[0].map(el => {
-            return (
-                <div>
-                    <a>{el.step_number}</a>
-                    <div>{el.instruction}</div>
-                </div>
-            )
+            tempArr.push(el.instruction)
+            return tempArr.join('\n')
         })
         let mappedIngredients = this.props.recipes[1].map(el => {
             return (
@@ -58,9 +93,17 @@ class EditRecipe extends Component {
             <div className='edit-page'>
                 <UserHeader />
                 <div>Edit Recipe</div>
-                <div>{this.props.recipes[0][0].title}</div>
+                <input 
+                    className='inputs'
+                    defaultValue={this.props.recipes[0][0].title}
+                    onChange={(e => this.handleInputChange(e.target.value))}>
+                </input>
                 {mappedIngredients}
-                {mappedInstructions}
+                <textarea 
+                    className='text-area' 
+                    defaultValue={mappedInstructions[mappedInstructions.length -1]}
+                    onChange={e => this.handleInstrChange(e.target.value)}></textarea>
+                <button onClick={(e => this.clickSave())} >Save</button>
             </div>
         )
     }
