@@ -4,12 +4,14 @@ import UserHeader from '../Header/UserHeader'
 import './EditRecipe.css'
 import {getOneRecipe} from '../../Redux/RecipeReducer'
 import {connect} from 'react-redux'
+import './SingleRecipe.css'
 
 class EditRecipe extends Component {
     constructor () {
         super()
         this.state = {
             title: '',
+            photo: '',
             tempInstructions: ''
         }
         this.clickSave = this.clickSave.bind(this)
@@ -26,6 +28,12 @@ class EditRecipe extends Component {
         })
     }
 
+    handlePhotoChange (e) {
+        this.setState ({
+            photo: e
+        })
+    }
+
     handleInstrChange(e) {
         this.setState ({
             tempInstructions: e
@@ -39,6 +47,11 @@ class EditRecipe extends Component {
                title: this.props.recipes[0][0].title
            })
         }
+        if (this.state.photo === '') {
+            this.setState ({
+                photo: this.props.recipes[0][0].photo
+            })
+         }
         let stringInstructions = this.state.tempInstructions.split('\n')
         console.log(stringInstructions)
         let formattedInstructions = []
@@ -55,13 +68,20 @@ class EditRecipe extends Component {
                 ingredient: el.ingredient
             })
         })
+        let incomingInstructions = []
+        for (let i = 0; i < this.props.recipes[0].length; i++) {
+            incomingInstructions.push({
+                step: this.props.recipes[0][i].step_number,
+                instruction: this.props.recipes[0][i].instruction
+            })
+        }
         console.log(formattedIngredients)
         console.log(this.state.title)
         axios.put(`/api/recipes/update/${id}`, {
             title: (this.state.title === '' ? this.props.recipes[0][0].title : this.state.title),
             // ingredients: formattedIngredients,
-            instructions: formattedInstructions,
-            photo: this.props.recipes[0][0].photo
+            instructions: (this.state.tempInstructions === '' ? incomingInstructions : formattedInstructions),
+            photo: (this.state.photo === '' ? this.props.recipes[0][0].photo : this.state.photo)
         })
         .then(() => {
             this.setState ({
@@ -82,8 +102,8 @@ class EditRecipe extends Component {
         })
         let mappedIngredients = this.props.recipes[1].map(el => {
             return (
-                <div key={el.instructions_id}>
-                    <a>{el.quantity} {el.measurement} {el.ingredient}</a>
+                <div className='ing-container' key={el.instructions_id}>
+                    <div id='ing-words'>{el.quantity} {el.measurement} {el.ingredient}</div>
                 </div>
             )
         })
@@ -92,18 +112,51 @@ class EditRecipe extends Component {
         return (
             <div className='edit-page'>
                 <UserHeader />
-                <div>Edit Recipe</div>
-                <input 
-                    className='inputs'
-                    defaultValue={this.props.recipes[0][0].title}
-                    onChange={(e => this.handleInputChange(e.target.value))}>
-                </input>
-                {mappedIngredients}
-                <textarea 
-                    className='text-area' 
-                    defaultValue={mappedInstructions[mappedInstructions.length -1]}
-                    onChange={e => this.handleInstrChange(e.target.value)}></textarea>
-                <button onClick={(e => this.clickSave())} >Save</button>
+                <div className='single-disp-body'>
+                    <h1 className='sxn-title'>Edit Recipe</h1>
+                    <div className='edit-disp-top-sxn'>
+                        <div className='edit-disp-title'>
+                            <h2 className='sxn-title'>Title</h2>
+                            <div className='title-input'>
+                                <input
+                                    className='inputs '
+                                    defaultValue={this.props.recipes[0][0].title}
+                                    onChange={(e => this.handleInputChange(e.target.value))}>
+                                </input>
+                            </div>
+                        </div>
+                        <div className='edit-disp-title photo-title'>
+                            <h2 className='sxn-title '>Photo URL</h2>
+                            <div className='title-input'>
+                                <input
+                                    className='inputs '
+                                    defaultValue={this.props.recipes[0][0].photo}
+                                    onChange={(e => this.handlePhotoChange(e.target.value))}>
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='single-disp-section-title'>
+                            <h2 className='sxn-title'>Ingredients</h2>
+                            {mappedIngredients}
+                        </div>
+                    <div className='single-disp-section-title'>
+                        <h2 className='sxn-title'>Instructions</h2>
+                        <div className='title-input'>
+                            <textarea
+                                name='text-area'
+                                rows='14'
+                                cols='75'
+                                className='text-area'
+                                defaultValue={mappedInstructions[mappedInstructions.length -1]}
+                                onChange={e => this.handleInstrChange(e.target.value)}>
+                            </textarea>
+                        </div>
+                        </div>
+                    <div className='save-btn'>
+                        <button className='btn' id='edit-save-btn' onClick={(e => this.clickSave())} >Save</button>
+                    </div>
+                </div>
             </div>
         )
     }

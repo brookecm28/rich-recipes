@@ -1,6 +1,6 @@
 .instr-container {
     display: flex;
-    justify-content: space-around;
+    margin-left: 35px;
     align-items: center;
     background-color: #faf6f0;
     color: #002626;
@@ -8,13 +8,24 @@
 
 .ing-container {
     display: flex;
-    justify-content: space-around;
+    margin-left: 35px;
     align-items: center;
     background-color: #faf6f0;
     color: #002626;
+    
 }
 
 .single-page {
+    background-color: #8BC5F9;
+    margin-top: 100px; 
+    color: #002626;
+    height: 88.2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-page {
     background-color: #8BC5F9;
     margin-top: 100px; 
     color: #002626;
@@ -34,12 +45,57 @@
 .sxn-title {
     color: #002626;
     font-weight: lighter;
+    text-align: left;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.edit-disp-top-sxn {
+    display: flex;
+}
+
+.photo-title {
+    margin-left: 10%;
 }
 
 #instr-words {
     color: #002626;
+    text-align: left;
 }
 
 #ing-words {
     color: #002626;
+    text-align: left;
+}
+
+.single-disp-img {
+    position: absolute;
+    right: 200px;
+    top: 200px;
+    height: 125px;
+}
+
+.edit-display-title {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.title-input {
+    /* position: relative; */
+    margin-left: 35px;
+    width: 165px;
+    margin-top: 0;
+}
+
+#edit-save-btn {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.save-btn {
+    margin-left: 35px;
+    width: 72px;
+    margin-top: 0;
 }

@@ -129,7 +129,7 @@ class NewRecipe extends Component {
                             <div className='group-title'>Image</div>
                             <input //this will be amazon s3
                                 className='inputs'
-                                placeholder='Image'
+                                placeholder='Image URL'
                                 value={this.state.img}
                                 onChange={e => this.handleImageChange(e.target.value)}>
                             </input>

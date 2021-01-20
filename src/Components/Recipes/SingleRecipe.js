@@ -35,19 +35,18 @@ class SingleRecipe extends Component {
     }
 
     render () {
-        const classes = this.props
+        // const classes = this.props
         let mappedInstructions = this.props.recipes[0].map(el => {
             return (
                 <div className='instr-container' key={el.step_number}>
-                    <a id='instr-words'>{el.step_number}</a>
-                    <div id='instr-words'>{el.instruction}</div>
+                    <div id='instr-words'>{el.step_number}. {el.instruction}</div>
                 </div>
             )
         })
         let mappedIngredients = this.props.recipes[1].map(el => {
             return (
                 <div className='ing-container' key={el.instructions_id}>
-                    <p id='ing-words'>{el.quantity} {el.measurement} {el.ingredient}</p>
+                    <div id='ing-words'>{el.quantity} {el.measurement} {el.ingredient}</div>
                 </div>
             )
         })
@@ -59,6 +58,7 @@ class SingleRecipe extends Component {
                 <UserHeader />
                 <div className='single-disp-body'>
                 <h1 className='sxn-title'>{this.props.recipes[0][0].title}</h1>
+                    <img className='single-disp-img' src={this.props.recipes[0][0].photo} />
                     <div className='single-disp-section'>
                         <div className='single-disp-section-title'>
                             <h2 className='sxn-title'>Ingredients</h2>
