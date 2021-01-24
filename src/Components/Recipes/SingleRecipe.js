@@ -3,8 +3,7 @@ import UserHeader from '../Header/UserHeader'
 import {connect} from 'react-redux'
 import {getOneRecipe} from '../../Redux/RecipeReducer'
 import './SingleRecipe.css'
-// import {styles} from './SingleRecipesStyles'
-// import {withStyles} from 'react-jss'
+
 
 // const useStyles = theme => ({
 //     instrContainer: {

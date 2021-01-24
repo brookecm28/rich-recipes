@@ -79,3 +79,68 @@
     
 //     instrMin++    
 // } 
+
+// -----LandingHeader CSS.header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     height: 110px;
+//     width: 100vw;
+//     background-color: #faf6f0;
+// }
+
+// .left-header {
+//     display: flex;
+//     background-color: #faf6f0;
+//     align-items: center;
+// }
+
+// .lobster-link {
+//     background-color: #faf6f0;
+// }
+
+// .login-link {
+//     background-color: #faf6f0;
+// }
+
+// .register-link {
+//     background-color: #faf6f0;
+// }
+
+// nav {
+//     background-color: #faf6f0;
+//     display: flex;
+//     justify-content: center;
+//     margin-right: 10px;
+// }
+
+// .logo {
+//     height: 100px;
+//     margin-left: 50px;
+//     margin-right: 20px;
+//     background-color: #faf6f0;
+    
+// }
+
+// .title {
+//     background-color: #faf6f0;
+//     color: #1c7ad9;
+//     font-family: 'Lora', serif;
+//     font-weight: lighter;
+//     margin-top: 29px;
+// }
+
+// .btn {
+//     background-color: #faf6f0;
+//     color: #1c7ad9;
+//     border: 2px solid #1c7ad9;
+//     font-size: 18pt;
+//     font-family: 'Lora', serif;
+//     width: 100px; 
+//     padding-bottom: 10px;
+// }
+
+// .header-btn {
+//     border: 2px solid #faf6f0;
+    
+// }

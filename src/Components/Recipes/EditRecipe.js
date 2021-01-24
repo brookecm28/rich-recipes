@@ -142,8 +142,6 @@ class EditRecipe extends Component {
                                     </div>
                                 </div>
                             </div>
-                        
-                   
                     <div className='single-disp-section-title'>
                             <h2 className='sxn-title'>Ingredients</h2>
                             {mappedIngredients}
