@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import UserHeader from '../Header/UserHeader'
-import {Link, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import '../Recipes/RecipeList.css'
 import {connect} from 'react-redux'
 import {updateUser, logout} from '../../Redux/AuthReducer'
@@ -42,7 +42,6 @@ class RecipeList extends Component {
                 <div className='singles-container'>
                    <RecipeListDisplay myList={this.props.recipes} /> 
                 </div>
-                
             </div>
         )
     }

@@ -4,22 +4,6 @@ import {connect} from 'react-redux'
 import {getOneRecipe} from '../../Redux/RecipeReducer'
 import './SingleRecipe.css'
 
-
-// const useStyles = theme => ({
-//     instrContainer: {
-//         display: 'flex',
-//         justifyContent: 'space-around',
-//         alignItems: 'center',
-//         backgroundColor: '#faf6f0'
-//     },
-//     singlePage: {
-//         backgroundColor: '#8BC5F9',
-//         marginTop: '100px', 
-//         color: '002626',
-//         height: '100vh'
-//     }
-// })
-
 class SingleRecipe extends Component {
     constructor () {
         super()
@@ -66,7 +50,11 @@ class SingleRecipe extends Component {
                 {this.props.recipes[0] && (
                     <>
                         <h1 className='sxn-title'>{this.props.recipes[0][0].title}</h1>
-                        <img className='single-disp-img' src={this.props.recipes[0][0].photo} />
+                        <img 
+                            className='single-disp-img' 
+                            src={this.props.recipes[0][0].photo} 
+                            alt={this.props.recipes[0][0].title}                            
+                        />
                     </>)
                     }
                     <div className='single-disp-section'>

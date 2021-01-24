@@ -1,27 +1,26 @@
-import React, {Component} from 'react'
-import styles from './LandingHeaderStyles'
+import React from 'react'
+import style from './LandingHeaderStyles'
 import lobsterLogo from './../../assets/blue-lobster-logo.png'
 import {Link, withRouter} from 'react-router-dom'
-// import {connect} from 'react-redux'
 
 const LandingHeader = props => {
     return (
-                <div className ='header' style={styles}>
-                    <div className="left-header">
-                        <Link to='/' className='lobster-link'>
-                            <img src={lobsterLogo} alt='lobster logo' className='logo'/>
+                <div className ='header' style={style.header}>
+                    <div className="left-header"style={style.leftHeader}>
+                        <Link to='/' className='lobster-link' style={style.lobsterLink}>
+                            <img src={lobsterLogo} alt='lobster logo' className='logo' style={style.logo}/>
                         </Link>
-                        <Link to='/' className='lobster-link'>
-                            <h1 className='title'>Rich Recipes</h1>
+                        <Link to='/' className='title-link' style={style.lobsterLink}>
+                            <h1 className='title' style={style.title}>Rich Recipes</h1>
                         </Link>
                     </div>
-                    <div className="right-header">
-                        <nav>
-                            <Link to='/register' className='register-link'>
-                                <button className='btn header-btn'>Join</button>
+                    <div className="right-header" style={style.rightHeader}>
+                        <nav style={style.nav}>
+                            <Link to='/register' className='register-link' style={style.registerLink}>
+                                <button className='btn header-btn' style={style.headerBtn}>Join</button>
                             </Link>
-                            <Link to='/auth' className='login-link'>
-                                <button className='btn header-btn'>Login</button>
+                            <Link to='/auth' className='login-link' style={style.loginLink}>
+                                <button className='btn header-btn' style={style.headerBtn}>Login</button>
                             </Link>
                         </nav>
                     </div>

@@ -9,9 +9,9 @@ class RecipeListDisplay extends Component {
     render() {
         let {myList} = this.props
         console.log(myList)
-        if (!myList) {
-            return <div className='no-recipes'>Your list is empty. Click 'New Recipe' above to get started!</div>
-        } 
+        // if (myList === []) {
+        //     return <div className='no-recipes'>Your list is empty. Click 'New Recipe' above to get started!</div>
+        // }
         let mappedRecipes = this.props.myList.map((recipe) => (
             <div key={recipe.recipe_id} className='indiv-recipe'>
                 <img 
@@ -34,6 +34,7 @@ class RecipeListDisplay extends Component {
                 />
                 </div>
             ))
+        
         return (
             <div className='single-recipe-container'>
                 {mappedRecipes}    
