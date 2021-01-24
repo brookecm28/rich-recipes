@@ -36,29 +36,40 @@ class SingleRecipe extends Component {
 
     render () {
         // const classes = this.props
-        let mappedInstructions = this.props.recipes[0].map(el => {
+        let mappedInstructions;
+        if (this.props.recipes[0]) {
+           mappedInstructions = this.props.recipes[0].map(el => {
             return (
                 <div className='instr-container' key={el.step_number}>
                     <div id='instr-words'>{el.step_number}. {el.instruction}</div>
                 </div>
             )
-        })
-        let mappedIngredients = this.props.recipes[1].map(el => {
-            return (
-                <div className='ing-container' key={el.instructions_id}>
-                    <div id='ing-words'>{el.quantity} {el.measurement} {el.ingredient}</div>
-                </div>
-            )
-        })
-
+        })  
+        }
+       
+        console.log(this.props.recipes)
+        let mappedIngredients;
+        if (this.props.recipes[1]) {
+            mappedIngredients = this.props.recipes[1].map(el => {
+                return (
+                    <div className='ing-container' key={el.instructions_id}>
+                        <div id='ing-words'>{el.quantity} {el.measurement} {el.ingredient}</div>
+                    </div>
+                )
+            })
+        }
         console.log(this.props)
-        console.log(this.props.recipes[0][0].title)
+        // console.log(this.props.recipes[0][0].title)
         return (
             <div className='single-page'>
                 <UserHeader />
                 <div className='single-disp-body'>
-                <h1 className='sxn-title'>{this.props.recipes[0][0].title}</h1>
-                    <img className='single-disp-img' src={this.props.recipes[0][0].photo} />
+                {this.props.recipes[0] && (
+                    <>
+                        <h1 className='sxn-title'>{this.props.recipes[0][0].title}</h1>
+                        <img className='single-disp-img' src={this.props.recipes[0][0].photo} />
+                    </>)
+                    }
                     <div className='single-disp-section'>
                         <div className='single-disp-section-title'>
                             <h2 className='sxn-title'>Ingredients</h2>

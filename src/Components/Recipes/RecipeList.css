@@ -37,7 +37,7 @@
     display: flex;
     /* justify-content: space-evenly; */
     border-bottom: 2pt solid #1C7ad9;
-    width: 1225px;
+    width: 100%;
 }
 
 .recipe-link {

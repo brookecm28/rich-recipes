@@ -20,7 +20,6 @@ module.exports = ({
 
         req.session.user = newUser
                 //step 1
-               
                 let transporter = await nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
@@ -33,7 +32,7 @@ module.exports = ({
                 let mailOPtions = {
                     from: 'rich.recipes.lobster@gmail.com',
                     to: `${email}`,
-                    subject: 'Testing on Register Fn',
+                    subject: 'Welcome from Rich Recipes',
                     text: `Welcome to Rich Recipes, ${first_name}.\n\nThank you for your support. If you have any suggestions for improvements, please email rich.recipes.lobster@gmail.com.\n\nBest,\nRichie the Lobster`
                 }
         

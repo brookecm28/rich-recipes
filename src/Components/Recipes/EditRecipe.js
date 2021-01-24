@@ -96,46 +96,54 @@ class EditRecipe extends Component {
 
     render () {
         let tempArr = []
-        let mappedInstructions = this.props.recipes[0].map(el => {
+        let mappedInstructions;
+        if (this.props.recipes[0]) {
+            mappedInstructions = this.props.recipes[0].map(el => {
             tempArr.push(el.instruction)
             return tempArr.join('\n')
         })
-        let mappedIngredients = this.props.recipes[1].map(el => {
-            return (
-                <div className='ing-container' key={el.instructions_id}>
-                    <div id='ing-words'>{el.quantity} {el.measurement} {el.ingredient}</div>
-                </div>
-            )
-        })
-        console.log(this.props.recipes)
-        console.log(this.props.recipes[0][0].title)
+        }
+        let mappedIngredients
+        if (this.props.recipes[1]) {
+             mappedIngredients = this.props.recipes[1].map(el => {
+                return (
+                    <div className='ing-container' key={el.instructions_id}>
+                        <div id='ing-words'>{el.quantity} {el.measurement} {el.ingredient}</div>
+                    </div>
+                )
+            })
+        }
         return (
             <div className='edit-page'>
                 <UserHeader />
                 <div className='single-disp-body'>
-                    <h1 className='sxn-title'>Edit Recipe</h1>
-                    <div className='edit-disp-top-sxn'>
-                        <div className='edit-disp-title'>
-                            <h2 className='sxn-title'>Title</h2>
-                            <div className='title-input'>
-                                <input
-                                    className='inputs '
-                                    defaultValue={this.props.recipes[0][0].title}
-                                    onChange={(e => this.handleInputChange(e.target.value))}>
-                                </input>
+                    {this.props.recipes[0] && (
+                        <>
+                            <h1 className='sxn-title'>Edit Recipe</h1>
+                            <div className='edit-disp-top-sxn'>
+                                <div className='edit-disp-title'>
+                                    <h2 className='sxn-title'>Title</h2>
+                                    <div className='title-input'>
+                                        <input
+                                            className='inputs '
+                                            defaultValue={this.props.recipes[0][0].title}
+                                            onChange={(e => this.handleInputChange(e.target.value))}>
+                                        </input>
+                                    </div>
+                                </div>
+                                <div className='edit-disp-title photo-title'>
+                                    <h2 className='sxn-title '>Photo URL</h2>
+                                    <div className='title-input'>
+                                        <input
+                                            className='inputs '
+                                            defaultValue={this.props.recipes[0][0].photo}
+                                            onChange={(e => this.handlePhotoChange(e.target.value))}>
+                                        </input>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className='edit-disp-title photo-title'>
-                            <h2 className='sxn-title '>Photo URL</h2>
-                            <div className='title-input'>
-                                <input
-                                    className='inputs '
-                                    defaultValue={this.props.recipes[0][0].photo}
-                                    onChange={(e => this.handlePhotoChange(e.target.value))}>
-                                </input>
-                            </div>
-                        </div>
-                    </div>
+                        
+                   
                     <div className='single-disp-section-title'>
                             <h2 className='sxn-title'>Ingredients</h2>
                             {mappedIngredients}
@@ -156,6 +164,9 @@ class EditRecipe extends Component {
                     <div className='save-btn'>
                         <button className='btn' id='edit-save-btn' onClick={(e => this.clickSave())} >Save</button>
                     </div>
+                    </>
+                    )
+                    }
                 </div>
             </div>
         )
