@@ -1,7 +1,7 @@
 .body {
     background-color: #8BC5F9;
     margin-top: 100px;
-    height: 700px;
+    height: 88.2vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,6 +12,9 @@
     background-color: #faf6f0;
     height: 90%;
     width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .group-title {
@@ -23,6 +26,8 @@
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
+    width: 70%;
+    margin-bottom: 10px;
 }
 
 .ing-input {
@@ -47,6 +52,19 @@
     width: 125px;
 }
 
+.new-title {
+    color: #002626;
+    border: none;
+    font-weight: lighter;
+    font-size: 36pt;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.ingredient-container {
+    margin-bottom: 10px;
+}
+
 .single-ingredient-container {
     display: flex;
     height: 25px;
@@ -55,6 +73,7 @@
 .ing-list-container-container {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .ing-list-container {
@@ -69,4 +88,31 @@
     color: #002626;
     font-size: 10pt;
     margin-right: 6px;
+}
+
+@media (max-width: 850px) {
+    .text-area {
+        width: 60%;
+    }
+    .content-container {
+        width: 80%;
+    }
+    .ingredient-container{
+        width: 450px;
+    }
+    .ing-input {
+        margin-right: 0;
+    }
+    .quan {
+        margin-right: 10px;
+    }
+    .add-ingredient {
+        margin-left: 44px;
+    }
+}
+
+@media(max-width: 500px) {
+    .new-title {
+        font-size: 26pt;
+    }
 }

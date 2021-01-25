@@ -115,6 +115,7 @@ class NewRecipe extends Component {
             <UserHeader />
             <div className='body'>
                 <div className='content-container'>
+                    <h1 className='new-title'>New Recipe</h1>
                     <div className='top-group'>
                         <div>
                             <div className='group-title'>Title</div>
@@ -138,7 +139,7 @@ class NewRecipe extends Component {
                     <div className='ingredient-container'>
                         <div className='group-title'>Ingredients</div>
                         <input 
-                            className='inputs ing-input'
+                            className='inputs ing-input quan'
                             placeholder='Quantity' 
                             value={this.state.quantity} 
                             onChange={e => this.handleQuantityChange(e.target.value)}>
