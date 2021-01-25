@@ -12,7 +12,9 @@ class RecipeListDisplay extends Component {
         // if (myList === []) {
         //     return <div className='no-recipes'>Your list is empty. Click 'New Recipe' above to get started!</div>
         // }
-        let mappedRecipes = this.props.myList.map((recipe) => (
+        let mappedRecipes
+        if (this.props.myList) {
+            mappedRecipes = this.props.myList.map((recipe) => (
             <div key={recipe.recipe_id} className='indiv-recipe'>
                 <img 
                     className='list-pic' 
@@ -25,7 +27,11 @@ class RecipeListDisplay extends Component {
                     className='recipe-link'>
                 <h3 className='recipe-title'>{recipe.title}</h3>
                 </Link>
-                <Link to={`/edit-recipe/${recipe.recipe_id}`} recipe_id={recipe.recipe_id}>
+                <Link 
+                    to={`/edit-recipe/${recipe.recipe_id}`} 
+                    recipe_id={recipe.recipe_id}
+                    className='icon-container'    
+                >
                     <HiPencil className='icon pencil' />
                 </Link>
                 <HiX
@@ -34,6 +40,8 @@ class RecipeListDisplay extends Component {
                 />
                 </div>
             ))
+        }
+       
         
         return (
             <div className='single-recipe-container'>

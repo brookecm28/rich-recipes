@@ -11,7 +11,7 @@
     font-size: 44pt;
     padding-top: 25px;
     text-align: left;
-    margin-left: 145px;
+    margin-left: 10%;
 }
 
 .singles-container {
@@ -38,6 +38,7 @@
     /* justify-content: space-evenly; */
     border-bottom: 2pt solid #1C7ad9;
     width: 100%;
+    align-items: center;
 }
 
 .recipe-link {
@@ -55,22 +56,25 @@
     width: auto;
     position: absolute;
     left: 500px;
-    
 }
 
 .icon {
-    margin-top: 32px;
     height: 17px;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
 }
 
 .pencil {
     position: absolute;
-    right: 550px;
+    right: 450px;
 }
 
 .delete {
     position: absolute;
-    right: 400px;
+    right: 350px;
 }
 
 .list-pic {
@@ -79,4 +83,50 @@
     align-content: center;
     position: relative;
     margin-left: 100px;
+}
+
+@media(max-width: 1250px) {
+    .pencil {
+        right: 250px
+    }
+    .delete {
+        right: 200px;
+    }
+    .recipe-title {
+        left: 275px;
+    }
+    .list-pic {
+        margin-left: 50px;
+        height: 50px;
+    }
+}
+
+@media(max-width: 850px) {
+    .pencil {
+        right: 150px
+    }
+    .delete {
+        right: 100px;
+    }
+    .recipe-title {
+        left: 125px;
+    }
+    .list-pic {
+        display: none
+    }
+}
+
+@media(max-width: 500px) {
+    .pencil {
+        right: 100px
+    }
+    .delete {
+        right: 55px;
+    }
+    .recipe-title {
+        left: 55px;
+    }
+    .my-recipes-title {
+        font-size: 32pt;
+    }
 }

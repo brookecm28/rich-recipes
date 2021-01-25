@@ -1,3 +1,4 @@
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -42,7 +43,12 @@ nav {
     color: #1c7ad9;
     font-family: 'Lora', serif;
     font-weight: lighter;
-    margin-top: 29px;
+
+}
+
+.hamburger {
+    display: none;
+    height: 50px;
 }
 
 .btn {
@@ -51,12 +57,48 @@ nav {
     border: 2px solid #1c7ad9;
     font-size: 16pt;
     font-family: 'Lora', serif;
-    /* width: 150px; */
-    /* height: 30px; */
     padding: 0;
-    /* width: auto; */
 }
 
 .header-btn {
     border: 2px solid #faf6f0;
+}
+
+
+
+@media(max-width: 850px) {
+    .nav-bar {
+        width: 275px;
+        justify-content: space-between;
+        margin-right: 5;
+    }
+    .logo {
+        margin-left: 25px;
+        margin-right: 5px;
+    }
+    .header-btn {
+        font-size: 14pt;
+    }
+}
+
+@media(max-width: 600px) {
+    .nav-bar {
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+        align-items: flex-end;
+        width: 150px;
+        justify-content: center;
+    }
+    .title-link {
+        width: 200px;
+        margin-right: none;
+    }
+ 
+}
+
+@media(max-width: 500px) {
+    .logo {
+        margin-left: 15px;
+    }
 }
