@@ -14,7 +14,7 @@ class RecipeListDisplay extends Component {
         // }
         let mappedRecipes
         if (this.props.myList) {
-            mappedRecipes = this.props.myList.map((recipe) => (
+            mappedRecipes = myList.map((recipe) => (
             <div key={recipe.recipe_id} className='indiv-recipe'>
                 <img 
                     className='list-pic' 
