@@ -1,15 +1,21 @@
-require('dotenv').config()
+require('dotenv').config({path: __dirname + '/../.env'})
 const express = require('express')
 const userCtrl = require('./controllers/users')
 const recipeCtrl = require('./controllers/recipes')
 const massive = require('massive')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 const session = require('express-session')
+const path = require('path')
 
 const app = express()
 
 //middleware
 app.use(express.json())
+
+app.use(express.static(__dirname + '/../build'))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 //session & cookie setup
 app.use(session({
@@ -26,7 +32,7 @@ app.post('/api/auth/logout', userCtrl.logout)
 app.get('/api/auth/me', userCtrl.getUser)
 
 
-// //recipe endpoints
+//recipe endpoints
 app.get('/api/recipes', recipeCtrl.getMyRecipes) //list out all recipes for user account page
 app.get('/api/recipes/:recipe_id', recipeCtrl.getOneRecipe) //display specific recipe
 app.post('/api/recipes/new', recipeCtrl.newRecipe) //add new recipe
