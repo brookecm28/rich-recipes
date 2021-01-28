@@ -33,7 +33,7 @@ class RecipeList extends Component {
     }
 
     render () {
-        console.log(this.props.recipes)
+        console.log(this.props.recipes) //coming in undefined
 
         return (
             <div className="r-list">
@@ -48,11 +48,10 @@ class RecipeList extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         updateUser: state.updateUser,
         logout: state.logout,
-        recipes: state.recipe.recipe
+        recipes: state.recipe.recipes
     }
 }
 

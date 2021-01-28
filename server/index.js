@@ -13,9 +13,7 @@ const app = express()
 app.use(express.json())
 
 app.use(express.static(__dirname + '/../build'))
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
-})
+
 
 //session & cookie setup
 app.use(session({
@@ -38,6 +36,10 @@ app.get('/api/recipes/:recipe_id', recipeCtrl.getOneRecipe) //display specific r
 app.post('/api/recipes/new', recipeCtrl.newRecipe) //add new recipe
 app.put('/api/recipes/update/:recipe_id', recipeCtrl.updateRecipe) //edit a user's recipe
 app.delete('/api/recipes/delete/:recipe_id', recipeCtrl.deleteRecipe) //delete a user's recipe
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 massive ({
     connectionString: CONNECTION_STRING,

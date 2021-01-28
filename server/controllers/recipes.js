@@ -42,10 +42,15 @@ module.exports = {
     },
     getMyRecipes: async (req, res) => {
         const db = await req.app.get('db')
+        console.log(req.session.user)
+        console.log('something else')
         if (req.session.user) {
             const { id } = req.session.user
             db.recipes.get_all_recipes(id)
-                .then(recipes => res.status(200).send(recipes))
+                .then(recipes => {
+                    console.log(recipes)
+                    res.status(200).send(recipes)
+                })
                 .catch(err => console.log(err))
         } else {
             res.status(403).send('User not logged in.')

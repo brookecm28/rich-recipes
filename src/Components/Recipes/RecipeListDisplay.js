@@ -5,16 +5,30 @@ import {connect} from 'react-redux'
 import {getAllRecipes} from '../../Redux/RecipeReducer'
 
 class RecipeListDisplay extends Component {
-    
+    constructor() {
+        super()
+        this.state = {
+            list: []
+        }
+    }
+
+    componentDidMount() {
+        console.log(this.props.recipes)
+        this.setState ({
+            list: [this.props.recipes]
+        })
+    }
+
     render() {
-        let {myList} = this.props
-        console.log(myList)
+        let {recipes} = this.props
+        // console.log(this.state.list)
+        console.log(this.props)
         // if (myList === []) {
         //     return <div className='no-recipes'>Your list is empty. Click 'New Recipe' above to get started!</div>
         // }
         let mappedRecipes
-        if (this.props.myList) {
-            mappedRecipes = myList.map((recipe) => (
+        if (recipes) {
+            mappedRecipes = recipes.map((recipe) => (
             <div key={recipe.recipe_id} className='indiv-recipe'>
                 <img 
                     className='list-pic' 
@@ -42,19 +56,23 @@ class RecipeListDisplay extends Component {
             ))
         }
        
-        
         return (
             <div className='single-recipe-container'>
-                {mappedRecipes}    
+                {this.props.recipes && (
+                    <>
+                        {mappedRecipes}  
+                    </>
+                )}
+                      
             </div>   
         )
     }
 }
 
-function mapStateToProps(reduxState) {
-    console.log(reduxState)
-    let recipes = reduxState.recipes
-    return {recipes}
+function mapStateToProps(state) {
+    return {
+        recipes: state.recipe.recipes
+    }
 }
 
 export default withRouter((connect(mapStateToProps, {getAllRecipes})(RecipeListDisplay)))
