@@ -7,7 +7,7 @@ const style = {
         justifyContent: 'space-between',
         alignItems: 'center',
         height: 110,
-        width: '100vw',
+        minWidth: '100vw',
         backgroundColor: '#faf6f0'
     },
     leftHeader: {
