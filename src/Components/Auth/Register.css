@@ -37,5 +37,17 @@
 @media (max-width: 500px) {
     .create-container {
         max-width: 300px;
+        margin-top: 70px;
+        margin-bottom: 50px;
+        height: 475px;
+    }
+    .top {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 300px) {
+    .create-container {
+        max-width: 250px;
     }
 }

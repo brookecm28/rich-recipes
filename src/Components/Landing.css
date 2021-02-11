@@ -116,4 +116,19 @@
     .lobster {
         max-height: 125px;
     }
+    .info {
+        flex-direction: column;
+    }
+    .slogan {
+        margin-top: 10px; 
+        margin-bottom: 10px;
+        padding-top: 50px;
+        padding-bottom: 35px;
+    }
+    .para-left {
+        margin-bottom: 35px;
+    }
+    .para-right {
+        margin-top: 30px;
+    }
 }
