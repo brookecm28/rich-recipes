@@ -7,6 +7,7 @@
     background-color: #5C3955;
     min-height: calc(100vh - 100px);
     margin-top: 100px;
+    min-width: 100vw;
 }
 .info {
     display: flex;
@@ -16,13 +17,19 @@
 
 .landing-body {
     margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .para-left {
     margin-left: 50px;
+    margin-right: 50px;
 }
 .para-right {
     margin-right: 50px;
+    margin-left: 50px;
 }
 
 .slogan {
@@ -44,4 +51,69 @@
     display: flex;
     align-items: center;
     padding: 5px;
+}
+
+@media (max-width: 1060px) {
+    .lobster {
+        max-height: 350px;
+    }
+    .landing-para {
+        width: 200px;
+        height: 200px;
+        font-size: 14pt;
+    }
+}
+
+@media (max-width: 900px) {
+    .lobster {
+        max-height: 300px;
+    }
+    .landing-para {
+        width: 175px;
+        height: 175px;
+        font-size: 12pt;
+    }
+    .para-left {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    .para-right {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 675px) {
+    .lobster {
+        max-height: 200px;
+    }
+    .landing-para {
+        width: 150px;
+        height: 150px;
+        font-size: 11pt;
+    }
+    .slogan {
+        max-width: 70vw;
+    }
+}
+
+@media (max-width: 575px) {
+    .lobster {
+        max-height: 150px;
+    }
+    .para-left {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .para-right {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+}
+
+@media (max-width: 500px) {
+    .lobster {
+        max-height: 125px;
+    }
 }

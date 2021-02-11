@@ -33,3 +33,9 @@
     color: #002626;
     height: 20px;
 }
+
+@media (max-width: 500px) {
+    .create-container {
+        max-width: 300px;
+    }
+}
