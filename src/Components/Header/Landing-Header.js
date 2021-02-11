@@ -1,5 +1,6 @@
 import React from 'react'
 import style from './LandingHeaderStyles'
+import './LandingHeader.css'
 import lobsterLogo from './../../assets/blue-lobster-logo.png'
 import {Link, withRouter} from 'react-router-dom'
 
@@ -27,6 +28,5 @@ const LandingHeader = props => {
                 </div>
             )
 }
-        // return this.props.location.pathname !== '/' &&
 
 export default withRouter(LandingHeader)

@@ -77,7 +77,6 @@ const style = {
 //             display: 'none',
 //         }
 //     }
-    
 }
 
 export default style
