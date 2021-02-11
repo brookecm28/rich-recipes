@@ -123,9 +123,14 @@
         right: 55px;
     }
     .recipe-title {
-        left: 55px;
+        left: 45px;
+        font-size: 14pt !important;
     }
     .my-recipes-title {
-        font-size: 32pt;
+        font-size: 28pt;
     }
+  .pencil {
+      right: 100px;
+  }
 }
+

@@ -64,7 +64,10 @@ nav {
     border: 2px solid #faf6f0;
 }
 
-
+.header-btn:hover {
+    color: #002626;
+    cursor: pointer;
+}
 
 @media(max-width: 850px) {
     .nav-bar {

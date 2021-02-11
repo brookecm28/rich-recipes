@@ -48,7 +48,6 @@ module.exports = {
             const { id } = req.session.user
             db.recipes.get_all_recipes(id)
                 .then(recipes => {
-                    console.log(recipes)
                     res.status(200).send(recipes)
                 })
                 .catch(err => console.log(err))
