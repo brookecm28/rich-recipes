@@ -13,7 +13,6 @@ class RecipeListDisplay extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.recipes)
         this.setState ({
             list: [this.props.recipes]
         })
@@ -21,7 +20,6 @@ class RecipeListDisplay extends Component {
 
     render() {
         let {recipes} = this.props
-        // console.log(this.state.list)
         console.log(this.props)
         // if (myList === []) {
         //     return <div className='no-recipes'>Your list is empty. Click 'New Recipe' above to get started!</div>

@@ -3,7 +3,6 @@ import axios from 'axios'
 import lobsterLogo from './../../assets/blue-lobster-logo.png'
 import './UserHeader.css'
 import {Link, withRouter} from 'react-router-dom'
-// import {connect} from 'react-redux'
 
 class UserHeader extends Component {
     constructor () {
@@ -31,7 +30,6 @@ class UserHeader extends Component {
     }
 
     render() {
-        // return this.props.location.pathname !== '/' &&
          return (
             <div className ='header'>
                 <div className="left-header">

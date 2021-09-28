@@ -18,7 +18,6 @@ class SingleRecipe extends Component {
     }
 
     render () {
-        // const classes = this.props
         let mappedInstructions;
         if (this.props.recipes[0]) {
            mappedInstructions = this.props.recipes[0].map(el => {
@@ -30,7 +29,6 @@ class SingleRecipe extends Component {
         })  
         }
        
-        console.log(this.props.recipes)
         let mappedIngredients;
         if (this.props.recipes[1]) {
             mappedIngredients = this.props.recipes[1].map(el => {
@@ -41,8 +39,7 @@ class SingleRecipe extends Component {
                 )
             })
         }
-        console.log(this.props)
-        // console.log(this.props.recipes[0][0].title)
+
         return (
             <div className='single-page'>
                 <UserHeader />
@@ -76,7 +73,6 @@ class SingleRecipe extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         recipes: state.recipe.singleRecipe
     }

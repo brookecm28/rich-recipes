@@ -53,7 +53,6 @@ class EditRecipe extends Component {
             })
          }
         let stringInstructions = this.state.tempInstructions.split('\n')
-        console.log(stringInstructions)
         let formattedInstructions = []
         for (let i = 0; i < stringInstructions.length; i++) {
             formattedInstructions.push({
@@ -75,8 +74,6 @@ class EditRecipe extends Component {
                 instruction: this.props.recipes[0][i].instruction
             })
         }
-        console.log(formattedIngredients)
-        console.log(this.state.title)
         axios.put(`/api/recipes/update/${id}`, {
             title: (this.state.title === '' ? this.props.recipes[0][0].title : this.state.title),
             // ingredients: formattedIngredients,
@@ -88,7 +85,6 @@ class EditRecipe extends Component {
                 title: '',
                 tempInstructions: []
             }) 
-            console.log('Recipe updated successfully.')
             this.props.history.push('/me')
         })
         .catch(err => console.log(err))

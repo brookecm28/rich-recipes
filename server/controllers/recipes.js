@@ -81,11 +81,11 @@ module.exports = {
         let recipe;
         try {
             recipe = await db.recipes.edit_recipe([recipe_id, title, photo])
-            instructions.forEach(async (instrObj) => {
+            instructions.forEach(async instruction => {
                 await db.recipes.edit_instructions({
                     recipe_id: recipe_id,
-                    step_number: instrObj.step,
-                    instruction: instrObj.instruction
+                    step_number: instruction.step,
+                    instruction: instruction.instruction
                 })
             }) 
         } catch (err) { console.log(err) }

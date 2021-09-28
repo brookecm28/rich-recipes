@@ -27,7 +27,6 @@ class Auth extends Component {
             // this.props.updateUser({
             //     email: res.data.email, //will potentially need to add other info here
             // })
-            console.log('login successful')
         this.props.history.push('/me')
         this.props.updateUser({
             id: res.data.id,

@@ -19,7 +19,6 @@ class RecipeList extends Component {
     }
 
     componentDidMount() {
-       console.log(this.props.location.pathname)
        this.props.getAllRecipes()
     }
 

@@ -74,7 +74,6 @@ class NewRecipe extends Component {
 
     addRecipe() {
         let stringInstructions = this.state.tempInstructions.split('\n')
-        console.log(stringInstructions)
         let formattedInstructions = []
         for (let i = 0; i < stringInstructions.length; i++) {
             formattedInstructions.push({
@@ -92,7 +91,6 @@ class NewRecipe extends Component {
             photo: this.state.img
         })
         .then(() => {
-            console.log('Recipe added successfully.')
             this.props.history.push('/me')
         })
         .catch(err => console.log(err))

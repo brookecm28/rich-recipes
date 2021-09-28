@@ -64,19 +64,8 @@ const style = {
     headerBtn: {
         border: '2px solid #faf6f0',
         fontSize: '18pt',
-        // '&:hover' : {
-        //     color: '#002626',
-        //     cursor: 'pointer'
-        // }
     },
-//    '@media (max-width: 500px)': {
-//         lobsterLink: {
-//             marginLeft: 15,
-//         },
-//         titleLink: {
-//             display: 'none',
-//         }
-//     }
+
 }
 
 export default style

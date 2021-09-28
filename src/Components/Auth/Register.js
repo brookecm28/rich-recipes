@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-// import axios from 'axios'
-// import {connect} from 'react-redux'
 import LandingHeader from '../Header/Landing-Header'
 import '../Auth/Register.css'
 import axios from 'axios'
@@ -21,13 +19,11 @@ class Register extends Component {
         this.setState({
             [prop]: val
         })
-        console.log(this.state)
     }
 
     register() {
         axios.post('/api/auth/register', this.state)
         .then(res => {
-            console.log('Registration successful.')
             this.props.history.push('/me')
         })
         .catch(err => {
