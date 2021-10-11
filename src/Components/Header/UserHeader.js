@@ -19,7 +19,6 @@ class UserHeader extends Component {
     logout() {
         axios.post('/api/auth/logout')
         .then(_ => {
-            console.log('Logout successful.')
             this.setState ({
                 first_name: '',
                 last_name: '',

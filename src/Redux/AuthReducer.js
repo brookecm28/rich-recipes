@@ -9,7 +9,6 @@ const UPDATE_USER = 'UPDATE_USER'
 const LOGOUT = 'LOGOUT'
 
 export function updateUser(obj) {
-    console.log(obj)
     return {
         type: UPDATE_USER,
         payload: obj
@@ -22,14 +21,14 @@ export function logout() {
     }
 }
 
-export default function reducer (state = initialState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_USER:
-            return {...state, 
-                id: action.payload.id, 
-                // first_name: action.payload.first_name,
-                // last_name: action.payload.last_name,
-                email: action.payload.email}
+            return {
+                ...state,
+                id: action.payload.id,
+                email: action.payload.email
+            }
         case LOGOUT:
             return initialState
         default:

@@ -25,9 +25,10 @@ CREATE TABLE rr_ingredients (
 CREATE TABLE rr_instructions (
     instructions_id SERIAL PRIMARY KEY,
     rr_recipe_id int,
-    step_number int,
-    instruction varchar
+    instruction TEXT []
 );
+
+-- ^^ this table is updated in pgweb, so now need to update the functions re this table in server controller
 
 -- CREATE TABLE rr_stage (
 --     recipe_id serial primary key

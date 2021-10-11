@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import LandingHeader from '../Header/Landing-Header'
 import '../Auth/Auth.css'
-import {updateUser} from '../../Redux/AuthReducer'
+import { updateUser } from '../../Redux/AuthReducer'
 
 class Auth extends Component {
     constructor() {
@@ -14,7 +14,7 @@ class Auth extends Component {
         }
         this.login = this.login.bind(this)
     }
-   
+
     handleChange(prop, val) {
         this.setState({
             [prop]: val
@@ -23,24 +23,21 @@ class Auth extends Component {
 
     login() {
         axios.post('/api/auth/login', this.state)
-        .then(res => {
-            // this.props.updateUser({
-            //     email: res.data.email, //will potentially need to add other info here
-            // })
-        this.props.history.push('/me')
-        this.props.updateUser({
-            id: res.data.id,
-            first_name: res.data.first_name,
-            email: res.data.email
-        })
-        }).catch(err => {
-            console.log(err)
-            alert('Incorrect email or password.')
-            this.setState ({
-                email: '',
-                password: ''
+            .then(res => {
+                this.props.history.push('/me')
+                this.props.updateUser({
+                    id: res.data.id,
+                    first_name: res.data.first_name,
+                    email: res.data.email
+                })
+            }).catch(err => {
+                console.log(err)
+                alert('Incorrect email or password.')
+                this.setState({
+                    email: '',
+                    password: ''
+                })
             })
-        })
     }
 
     render() {
@@ -48,18 +45,18 @@ class Auth extends Component {
             <div className='auth'>
                 <LandingHeader />
                 <div className='login-container'>
-                    <input 
-                      className='inputs top' 
-                      placeholder='Email' 
-                      value={this.state.email}
-                      onChange={e => this.handleChange('email', e.target.value)}>
+                    <input
+                        className='inputs top'
+                        placeholder='Email'
+                        value={this.state.email}
+                        onChange={e => this.handleChange('email', e.target.value)}>
                     </input>
-                    <input 
-                      className='inputs' 
-                      placeholder='Password' 
-                      value={this.state.password}
-                      type='password'
-                      onChange={e => this.handleChange('password', e.target.value)}>
+                    <input
+                        className='inputs'
+                        placeholder='Password'
+                        value={this.state.password}
+                        type='password'
+                        onChange={e => this.handleChange('password', e.target.value)}>
                     </input>
                     <button className='btn login' onClick={this.login}>Login</button>
                 </div>
@@ -68,4 +65,4 @@ class Auth extends Component {
     }
 }
 
-export default connect(null, {updateUser}) (Auth)
+export default connect(null, { updateUser })(Auth)

@@ -6,4 +6,4 @@
 SELECT * FROM rr_recipes r
 JOIN rr_instructions ins ON r.recipe_id = ins.rr_recipe_id
 WHERE r.recipe_id = $1
-ORDER BY ins.step_number ASC;
+ORDER BY ins.instructions_id ASC;

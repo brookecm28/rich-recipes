@@ -8,12 +8,13 @@ module.exports = {
         //checking to make sure someone is logged in before sending the recipe to the DB
         if (req.session.user) {
             const { id } = req.session.user
-            let recipeAdd
             try {
                 //send the recipe to the db
                 recipeAdd = await db.recipes.add_recipe([id, title, photo])
+                const [recipe] = recipeAdd
+
                 //grab the newly assigned recipe_id
-                let rrId = recipeAdd[0].recipe_id
+                let rrId = recipe.recipe_id
                 //send the ingredients to the db with the correct recipe_id
                 ingredients.forEach(async (ingObj) => {
                     await db.recipes.add_ingredients({
@@ -63,8 +64,10 @@ module.exports = {
         if (req.session.user) {
             try {
                 recipeInstr = await db.recipes.get_one_recipe_instr(recipe_id)
+                const [instr] = recipeInstr
+
                 recipeIng = await db.recipes.get_one_recipe_ing(recipe_id)
-                if (recipeInstr[0].rr_user_id !== id) {
+                if (instr.rr_user_id !== id) {
                     res.status(401).send('You do not have access to this recipe.')
                 } else {
                     res.status(200).send([recipeInstr, recipeIng])
@@ -81,13 +84,15 @@ module.exports = {
         let recipe;
         try {
             recipe = await db.recipes.edit_recipe([recipe_id, title, photo])
-            instructions.forEach(async instruction => {
+            instructions.map(async (instruction, index) => {
                 await db.recipes.edit_instructions({
                     recipe_id: recipe_id,
-                    step_number: instruction.step,
-                    instruction: instruction.instruction
+                    //  no more steps or indiv instructions; 
+                    //  one big array of all instructions
+                    instructions_id: index,  //will be the index of the array, so maybe I will need to map it
+                    instruction: instruction //value of the index
                 })
-            }) 
+            })
         } catch (err) { console.log(err) }
         res.status(200).send(recipe)
     },
@@ -101,4 +106,4 @@ module.exports = {
             res.status(403).send('User not logged in.')
         }
     }
-} 
+}

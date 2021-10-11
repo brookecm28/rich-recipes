@@ -1,4 +1,4 @@
 INSERT INTO rr_instructions
-(rr_recipe_id, step_number, instruction)
+(rr_recipe_id, instructions_id, instruction)
 VALUES
-(${recipe_id}, ${step_number}, ${instruction});
+(${recipe_id}, ${instructions_id}, ${instruction});
